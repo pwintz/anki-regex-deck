@@ -1,0 +1,122 @@
+{
+    "1572637198325": {
+        "css": ".card {\n font-family: arial;\n font-size: 20px;\n text-align: left;\n color: black;\n background-color: white;\n}\n\n.regexmatch {\n  background-color: rgb(0, 170, 255);\n}\n\n\n.cloze {\n  font-weight: bold;\n  color: blue;\n}\n\n.nightMode {\n  & > * {\n    & .cloze {\n       color: lightblue;\n    }\n\t  & code {\n      background-color: #444;\n      color: white\n    }\n    & code .cloze {\n      color: lightblue;\n    }\n  }\n}\n\npre .cloze {\n font-weight: bold;\n color: #88CCff;\n}\n\ncode .cloze {\n font-weight: bold;\n color: #0022ff;\n}\n\ncode, pre {\n font-family: \"Courier New\", Courier, monospace, Consolas, \"Andale Mono WT\", \"Andale Mono\", \"Lucida Console\", \"Lucida Sans Typewriter\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Liberation Mono\", \"Nimbus Mono L\", Monaco;\n}\n\ncode {\n background-color: #EEE;\n color: black;\n padding-left: 2px;\n padding-right: 2px;\n border-radius: 3px;\n font-weight: bold\n}\n\npre {\n background-color: #00203f;\n color: white;\n overflow-x: auto; \n padding: 10px;\n border-radius: 5px;\n}\n\n.image-container {\n  max-width: 750px; \n  margin: 0 auto;\n  text-align: center;\n}\n\n.image-container img {\n   max-width: 90%;\n   height: auto;\n\t h-align: center\n}",
+        "did": 1572813496477,
+        "flds": [
+            {
+                "description": "Name of syntax",
+                "font": "Arial",
+                "name": "Name",
+                "ord": 0,
+                "rtl": false,
+                "size": 20,
+                "sticky": false
+            },
+            {
+                "description": "",
+                "font": "Arial",
+                "media": [],
+                "name": "Description",
+                "ord": 1,
+                "rtl": false,
+                "size": 20,
+                "sticky": false
+            },
+            {
+                "description": "",
+                "font": "Courier New",
+                "media": [],
+                "name": "Syntax (back)",
+                "ord": 2,
+                "rtl": false,
+                "size": 20,
+                "sticky": false
+            },
+            {
+                "description": "",
+                "font": "Arial",
+                "media": [],
+                "name": "Description (long)",
+                "ord": 3,
+                "rtl": false,
+                "size": 20,
+                "sticky": false
+            },
+            {
+                "description": "",
+                "font": "Courier New",
+                "media": [],
+                "name": "Example code (back)",
+                "ord": 4,
+                "rtl": false,
+                "size": 20,
+                "sticky": false
+            },
+            {
+                "description": "",
+                "font": "Arial",
+                "media": [],
+                "name": "Example matching (back)",
+                "ord": 5,
+                "rtl": false,
+                "size": 20,
+                "sticky": false
+            }
+        ],
+        "id": 1572637198325,
+        "latexPost": "\\end{document}",
+        "latexPre": "\\documentclass[12pt]{article}\n\\special{papersize=3in,5in}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amssymb,amsmath}\n\\pagestyle{empty}\n\\setlength{\\parindent}{0in}\n\\begin{document}\n",
+        "latexsvg": false,
+        "mod": 1722717064,
+        "name": "Regex Syntax",
+        "req": [
+            [
+                0,
+                "any",
+                [
+                    1
+                ]
+            ],
+            [
+                1,
+                "any",
+                [
+                    1,
+                    2
+                ]
+            ]
+        ],
+        "sortf": 0,
+        "tags": [
+            "regex",
+            "substitution"
+        ],
+        "tmpls": [
+            {
+                "afmt": "{{FrontSide}}\n\n<hr id=answer>\n\n\n<pre>{{Syntax (back)}}</pre>\n{{#Description (long)}}\n{{Description (long)}}<br>\n{{/Description (long)}}\n{{#Example code (back)}}\n<h4>Example:</h4>\n<pre>{{Example code (back)}}</pre>\n{{/Example code (back)}}\nMatches:\n<pre>{{Example matching (back)}}</pre>\n",
+                "bafmt": "",
+                "bfont": "",
+                "bqfmt": "",
+                "bsize": 0,
+                "did": null,
+                "name": "Syntax from description",
+                "ord": 0,
+                "qfmt": "In RegEx, the syntax {{Description}} is..."
+            },
+            {
+                "afmt": "In RegEx, \n<pre>{{Syntax (back)}}</pre>\nis syntax <span class=\"cloze\">{{Description}}</span>.\n\n<hr>\n\n{{#Description (long)}}\n{{Description (long)}}<br>\n{{/Description (long)}}\n{{#Example code (back)}}\n<h4>Example:</h4>\n<pre>{{Example code (back)}}</pre>\n{{/Example code (back)}}\nMatches:\n<pre>{{Example matching (back)}}</pre>\n",
+                "bafmt": "",
+                "bfont": "",
+                "bqfmt": "",
+                "bsize": 0,
+                "did": null,
+                "name": "Description from Syntax",
+                "ord": 1,
+                "qfmt": "In RegEx, \n<pre>{{Syntax (back)}}</pre>\nis syntax <span id=\"description\">{{Description}}</span>.\n\n<script>\n// Hide sections of the definition surrounded by two curly braces.\nvar description = \"{{Description}}\"\nvar cloze_blank = \"<span class=\\\"cloze\\\">[...]</span>\";\n\nvar quantifier_regex = /^(?<prefix>to quantify a pattern as repeating)(?:\\s|\\&nbsp\\;)(?<quantifier>.*)(times)/;\nif (quantifier_regex.test(description)) {\n  description = description.replace(quantifier_regex, \"$1 \" + cloze_blank + \" $3\")\ndocument.getElementById(\"description\").innerHTML = description;\n} else {\n\n  var regex = /^(?<prefix>to match |to quantify a pattern as repeating |for |to )?(?:\\s|\\&nbsp\\;)*(?<quantifier>any|an|a|all)?(?<body>.*)/;\n  var newString = description.replace(regex, replacer);\n  document.getElementById(\"description\").innerHTML = newString;\n}\n\nfunction replacer(match, p1, p2, p3, offset, string, groups) {\n\tvar prefix = p1;\n\tvar quantifier = p2;\n\tvar body = p3;\n\tconsole.log(p3)\n  if (prefix == undefined){\n\t\tprefix = \"\";\n\t}\n\n\tif (quantifier == undefined){\n\t\tquantifier = \"\";\n\t} else {\n\t\tquantifier = \"a(n) \";\n\t}\n\n\tif (body == undefined){\n\t\tbody = \"NOBODY FOUND\";\n\t}\n\treturn prefix + quantifier + \"<span class=\\\"cloze\\\">[...]</span>\"; // groups['body'];\n  //return replacement;\n}\n\n</script>"
+            }
+        ],
+        "type": 0,
+        "usn": 0,
+        "vers": []
+    }
+}
